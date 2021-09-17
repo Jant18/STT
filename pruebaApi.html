@@ -20,13 +20,11 @@
 <script>
 $(function(){
 	$.ajax({
-		url : 'https://www.banxico.org.mx/SieAPIRest/service/v1/series/SP74665,SF61745,SF60634,SF43718,SF43773/datos/2021-09-11/2021-09-16?token=5faac7bc5dcc4ee6250b12c92b0e89c09c1d0e407958498a09e5341ef4f81aa5',
+		url : 'https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF111916,SF43878,SF43783,SP74665,SF61745,SF60634,SF43718,SF43773/datos/2021-09-11/2021-09-16?token=5faac7bc5dcc4ee6250b12c92b0e89c09c1d0e407958498a09e5341ef4f81aa5',
 		jsonp : 'callback',
 		dataType : 'jsonp', 
 		success : function(response) {
 			var registros=response.bmx.series;
-			
-
 			for (var i in registros) {
 				  var registro=registros[i];
 				  var reg='<tr><td>'+registro.titulo+'</td><td>'+registro.datos[0].fecha+'</td></tr>'
