@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>Prueba Arreglo 20 Numeros </title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="clo-md-12">
+				<h5>Arreglo 20 Numeros</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8" align="left">
+				<p>Generar un arreglo con 20 números aleatorios de 1 a 100 y luego organizarlo de menor a mayor sin utilizar la sentencia .sort()</p>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<table class="table table-bordered">
+					<tr id="td">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<table class="table table-bordered">
+					<tr id="tdArreglado">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+	        <div class="col-md-1">
+	            <a href="index.html" id="fecha" class="btn btn-danger">Volver </a>
+	        </div>
+	         <div class="col-md-3" align="right">
+		        <a  id="crearArreglo" class="btn btn-success">Crear Arreglo Desordenado </a>
+		    </div>
+		    <div class="col-md-2" align="left">
+		        <a  id="ordenarArreglo" class="btn btn-success">Ordenar </a>
+		    </div>
+	    </div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+				
+		let num=[];
+
+		$("#crearArreglo").click(function(){
+		  $("#td").empty();
+		  for(let i=0; i<20;i++){
+		  	num[i] = Math.round(Math.random() *100);
+			}
+			for(let i=0; i<20;i++){
+				$("#td").append('<td>' +num[i]+ '</td>');
+			}
+		})
+
+
+		$("#ordenarArreglo").click(function(){
+			if(num[0] == undefined){
+				alert("Debes Crear el Arreglo para organizarlo");
+			}else{
+				$("#tdArreglado").empty();
+				  for(let i = 0; i<20; i++){
+						j = i;
+						camb  = num[i];
+
+						while((j > 0 ) && (num[j-1] > camb)){
+							num[j]=num[j-1];
+							j--;
+						}
+						num[j] = camb;
+					}
+				  
+				  
+				  for(let i=0; i<20;i++){
+						$("#tdArreglado").append('<td>' +num[i]+ '</td>');
+					}
+			}
+		  
+		})
+		  
+
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		#tituloInter, #tituloUnion, #titulodif, #titulosime, #tituloA, #tituloB{
+			display: none;	
+		}
+		.volver{
+			margin: 5px !important;
+		}
+
+	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>Prueba Fecha </title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="clo-md-12">
+				<h5>Arreglo A-B</h5>
+				<p>Generar dos arreglos A y B con 10 valores aleatorios de letras del abecedario y mostrar los siguientes resultados: </p>
+				<ul>
+					<li>Unión: 𝐴⋃𝐵</li>
+					<li>Intersección 𝐴⋂𝐵</li>
+					<li>Diferencia: 𝐴∆𝐵 </li>
+					<li>Diferencia Simétrica: A-B</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="tituloA">Arreglo A: </p>
+				<table class="table table-bordered">
+					<tr id="tdArregloA">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="tituloB">Arreglo B: </p>
+				<table class="table table-bordered">
+					<tr id="tdArregloB">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="tituloInter">Intersección AnB: </p>
+				<table class="table table-bordered">
+
+					<tr id="interAB">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="tituloUnion">Union AUB: </p>
+				<table class="table table-bordered">
+					<tr id="unionAB">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="titulodif">Diferencia A-B: </p>
+				<table class="table table-bordered">
+					<tr id="difAB">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-8">
+				<p id="titulosime">Diferencia Simetrica A-B: </p>
+				<table class="table table-bordered">
+					<tr id="simeAB">
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+		
+		<div class="row">
+	        <div class="col-md-2" align="right">
+		        <a  id="crearArregloA" class="btn btn-success">Crear Arreglo A </a>
+		    </div>
+		    <div class="col-md-2" align="right">
+		        <a  id="crearArregloB" class="btn btn-success">Crear Arreglo B </a>
+		    </div>
+		    <div class="col-md-2" align="right">
+		        <a  id="inter" class="btn btn-success"> Intersección AnB </a>
+		    </div>
+		    <div class="col-md-2" align="right">
+		        <a  id="union" class="btn btn-success"> Union AUB </a>
+		    </div>
+		    <div class="col-md-2" align="right">
+		        <a  id="diferencia" class="btn btn-success"> Diferencia A-B </a>
+		    </div>
+		    <div class="col-md-2" align="right">
+		        <a  id="simetrica" class="btn btn-success"> Diferencia S A-B </a>
+		    </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-md-1"></div>
+	    	<div class="col-md-1 volver">
+	            <a href="index.html" id="fecha" class="btn btn-danger">Volver </a>
+	        </div>
+	    </div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		let ArregloA = [];
+		let ArregloB = [];
+		$(document).ready(function(){
+		function makeid(length) {
+		   let result           = '';
+		   let characters       = 'abcdefghijklmnopqrstuvwxyz';
+		   let charactersLength = characters.length;
+		   for ( let i = 0; i < length; i++ ) {
+		      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		   }
+		   return result;
+		}
+		/*Crear Arreglo A*/		
+		$("#crearArregloA").click(function(){
+			/*Ocultar Cuadriculas*/
+			$("#interAB").empty();
+			$("#unionAB").empty();
+			$("#difAB").empty();
+			$("#simeAB").empty();
+			/*Ocultar Arreglos*/
+			$("#tdArregloA").empty();
+
+			/*Ocultar Titulos*/
+			$("#tituloInter").hide();
+			$("#tituloUnion").hide();
+			$("#titulodif").hide();
+			$("#titulosime").hide();
+			
+
+			$("#tituloA").show();
+			for(let i = 0; i<10; i++){
+				ArregloA[i] = makeid(1);
+			  $("#tdArregloA").append('<td>' +ArregloA[i]+ '</td>');
+			}
+		})
+
+		/*Crear Arreglo B*/
+		$("#crearArregloB").click(function(){
+			/*Ocultar Cuadriculas*/
+			$("#interAB").empty();
+			$("#unionAB").empty();
+			$("#difAB").empty();
+			$("#simeAB").empty();
+			/*Ocultar Arreglos*/
+
+			$("#tdArregloB").empty();
+			/*Ocultar Titulos*/
+			$("#tituloInter").hide();
+			$("#tituloUnion").hide();
+			$("#titulodif").hide();
+			$("#titulosime").hide();
+
+			$("#tituloB").show();
+			for(let i = 0; i<10; i++){
+				ArregloB[i] = makeid(1);
+			  $("#tdArregloB").append('<td>' +ArregloB[i]+ '</td>');
+			}
+		})
+			
+
+		/*Crear Interseccion */	
+		$("#inter").click(function(){
+			let interseccion = $(ArregloA).filter(ArregloB).toArray();
+			for(let i =0; i<interseccion.length;i++){
+				$("#tituloInter").show();
+				$("#interAB").append('<td>' +interseccion[i]+ '</td>');  	
+			}
+		})
+
+		/*Crear Union */
+		$("#union").click(function(){
+			let union = Array.from(new Set(ArregloA.concat(ArregloB))) 
+			$("#tituloUnion").show();
+			for(let i =0; i<union.length;i++){
+				$("#unionAB").append('<td>' +union[i]+ '</td>');
+			}
+		})
+		/*Crear Diferencia */	
+		$("#diferencia").click(function(){
+			let diferenciaA = $(ArregloA).not(ArregloB).toArray();
+			$("#titulodif").show();
+			for(let i =0; i<diferenciaA.length;i++){
+				$("#difAB").append('<td>' +diferenciaA[i]+ '</td>');
+			}
+
+		})
+
+		/*Diferencia complementaria*/
+		$("#simetrica").click(function(){
+			let simetrica = $(ArregloA).not(ArregloB).toArray().concat($(ArregloB).not(ArregloA).toArray());
+			$("#titulosime").show();
+			for(let i =0; i<simetrica.length;i++){
+				$("#simeAB").append('<td>' +simetrica[i]+ '</td>');
+			}
+		})
+			
+
+
+
+
+
+
+		})
+		
+
+
+		
+	
+
+
+		
+	</script>
+
+</body>
+</html>
